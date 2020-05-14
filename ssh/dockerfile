@@ -3,12 +3,10 @@ FROM ubuntu
 #作者信息
 MAINTAINER from xxx by pam
 RUN mv /etc/apt/sources.list  /etc/apt/sources.listbk
-RUN echo "deb http://mirrors.cloud.tencent.com/ubuntu/ bionic main restricted universe multiverse" >>/etc/apt/sources.list
-RUN echo "deb http://mirrors.cloud.tencent.com/ubuntu/ bionic-security main restricted universe multiverse" >>/etc/apt/sources.list
-RUN echo "deb http://mirrors.cloud.tencent.com/ubuntu/ bionic-updates main restricted universe multiverse" >>/etc/apt/sources.list
-RUN echo "deb-src http://mirrors.cloud.tencent.com/ubuntu/ bionic main restricted universe multiverse" >>/etc/apt/sources.list
-RUN echo "deb-src http://mirrors.cloud.tencent.com/ubuntu/ bionic-security main restricted universe multiverse">>/etc/apt/sources.list
-RUN echo "deb-src http://mirrors.cloud.tencent.com/ubuntu/ bionic-updates main restricted universe multiverse" >>/etc/apt/sources.list
+RUN echo "deb http://mirrors.tencentyun.com/ubuntu/ focal main restricted universe multiverse" >>/etc/apt/sources.list
+RUN echo "deb http://mirrors.tencentyun.com/ubuntu/ focal-updates main restricted universe multiverse" >>/etc/apt/sources.list
+RUN echo "deb http://mirrors.tencentyun.com/ubuntu/ focal-backports main restricted universe multiverse" >>/etc/apt/sources.list
+RUN echo "deb http://mirrors.tencentyun.com/ubuntu/ focal-security main restricted universe multiverse" >>/etc/apt/sources.list
 RUN apt-get update
 
 #安装ssh服务
@@ -27,4 +25,4 @@ EXPOSE 22
 
 
 #设置自启动命令
-CMD ["/run.sh"]
+CMD /usr/sbin/sshd -D
